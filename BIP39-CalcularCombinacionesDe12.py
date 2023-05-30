@@ -9,7 +9,7 @@
 # Script de NiPeGun para calcular todas las combinaciones posibles de las palabras leidas en un archivo
 #
 # Ejecución remota:
-#   curl -s x | bash
+#   curl -sL https://raw.githubusercontent.com/nipegun/crypto-scripts/main/BIP39-CalcularCombinacionesDe12.py | bash
 # ----------
 
 def fCombinarPalabras(words, vTotalArupadas, combination=[], combinations=set()):
