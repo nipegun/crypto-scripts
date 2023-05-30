@@ -11,32 +11,30 @@
 #   curl -sL https://raw.githubusercontent.com/nipegun/crypto-scripts/main/BIP39-CalcularCombinacionesDe12.py | bash
 # ----------
 
-def fCombinarPalabras(words, vTotalArupadas, combination=[], combinations=set()):
-  if len(combination) == vTotalArupadas:
+def fCombinarPalabras(words, group_size, combination=[], combinations=set()):
+  if len(combination) == group_size:
     combinations.add(tuple(combination))
     return
 
   for word in words:
     if word not in combination:
-      fCombinarPalabras(words, vTotalArupadas, combination + [word], combinations)
-    return combinations
+      fCombinarPalabras(words, group_size, combination + [word], combinations)
+  return combinations
 
-
-def fLeerPalabrasDeArchivo(filename):
+def fLeerPalabrasDeArchivo(vArchivo):
   words = []
-  with open(filename, 'r') as file:
+  with open(vArchivo, 'r') as file:
     for line in file:
       line = line.strip()
       line_words = line.split()
       words.extend(line_words)
   return words
 
-# Ejemplo de uso
-vArchivo = '12Palabras.txt'
+vArchivo = '/root/BIP39-english-resumida2.txt'
 words = fLeerPalabrasDeArchivo(vArchivo)
 
-vTotalArupadas = 12
-all_combinations = fCombinarPalabras(words, vTotalArupadas)
+group_size = 12
+all_combinations = fCombinarPalabras(words, group_size)
 
 for combination in all_combinations:
   print(' '.join(combination))
