@@ -38,3 +38,5 @@ all_combinations = fCombinarPalabras(words, group_size)
 
 for combination in all_combinations:
   print(' '.join(combination))
+
+  
